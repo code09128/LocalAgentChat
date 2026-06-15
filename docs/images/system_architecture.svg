@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowPurple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowOrange" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#0072ff" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bd00ff" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#7209b7" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb700" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#ff5500" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39ff14" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#00aa00" stop-opacity="0.05" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#00f0ff" />
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#bd00ff" />
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ffb700" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#39ff14" />
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 800; fill: #ffffff; letter-spacing: 2px; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #94a3b8; font-weight: 500; }
+    .box-title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #cbd5e1; font-weight: 600; }
+    .tech-text { font-family: 'Courier New', Courier, monospace; font-size: 10px; fill: #64748b; }
+    .flow-label { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 700; fill: #94a3b8; }
+    .connection-line { fill: none; stroke-width: 1.5; stroke-dasharray: 4 2; }
+  </style>
+
+  <!-- Background -->
+  <rect width="800" height="500" rx="15" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2" />
+  
+  <!-- Tech Grid Background lines (decorative) -->
+  <line x1="50" y1="0" x2="50" y2="500" stroke="#1e293b" stroke-width="0.5" />
+  <line x1="750" y1="0" x2="750" y2="500" stroke="#1e293b" stroke-width="0.5" />
+  <line x1="0" y1="60" x2="800" y2="60" stroke="#1e293b" stroke-width="0.5" />
+
+  <!-- Header Title -->
+  <text x="30" y="40" class="title">LOCAL-SMART SYSTEM ARCHITECTURE</text>
+  <text x="520" y="40" class="subtitle">前後端與外部服務資料流架構圖</text>
+
+  <!-- ==================== CLIENT LAYER ==================== -->
+  <g transform="translate(50, 100)">
+    <rect width="210" height="320" rx="10" fill="url(#cyanGrad)" stroke="#00f0ff" stroke-width="1.5" filter="url(#glowCyan)" />
+    <text x="15" y="25" class="box-title" fill="#00f0ff">Client Layer (React Frontend)</text>
+    <text x="15" y="45" class="tech-text">Vite + React 19 + Tailwind CSS</text>
+    
+    <!-- UI Panels -->
+    <!-- Chat Screen -->
+    <rect x="15" y="70" width="180" height="45" rx="6" fill="#1e293b" stroke="#334155" />
+    <text x="25" y="96" class="label">Chat &amp; Sessions (對話歷程)</text>
+    
+    <!-- Office Screen -->
+    <rect x="15" y="130" width="180" height="45" rx="6" fill="#1e293b" stroke="#334155" />
+    <text x="25" y="156" class="label">Office Dashboard (系統監控)</text>
+
+    <!-- Settings & Modules -->
+    <rect x="15" y="190" width="180" height="45" rx="6" fill="#1e293b" stroke="#334155" />
+    <text x="25" y="216" class="label">Settings (LLM/Gateway/Tools)</text>
+
+    <!-- Conductor Monitor -->
+    <rect x="15" y="250" width="180" height="50" rx="6" fill="#0f172a" stroke="#00f0ff" stroke-width="1" />
+    <text x="25" y="270" class="label" fill="#00f0ff">Live Conductor Card</text>
+    <text x="25" y="288" class="tech-text" fill="#00f0ff">SSE 實時狀態/日誌攔截</text>
+  </g>
+
+  <!-- ==================== SERVER LAYER ==================== -->
+  <g transform="translate(320, 100)">
+    <rect width="210" height="320" rx="10" fill="url(#purpleGrad)" stroke="#bd00ff" stroke-width="1.5" filter="url(#glowPurple)" />
+    <text x="15" y="25" class="box-title" fill="#bd00ff">Server Layer (Express Backend)</text>
+    <text x="15" y="45" class="tech-text">TypeScript + tsx runner</text>
+
+    <!-- API Routers -->
+    <rect x="15" y="70" width="180" height="75" rx="6" fill="#1e293b" stroke="#334155" />
+    <text x="25" y="92" class="label" fill="#bd00ff">API Gateway / Routers</text>
+    <text x="25" y="110" class="tech-text">/api/sessions, /api/providers</text>
+    <text x="25" y="125" class="tech-text">/api/system/usage, /api/mcp</text>
+
+    <!-- Log Monitor Service -->
+    <rect x="15" y="160" width="180" height="70" rx="6" fill="#1e293b" stroke="#334155" />
+    <text x="25" y="182" class="label" fill="#bd00ff">SSE Log Streamer</text>
+    <text x="25" y="200" class="tech-text">/api/monitor/stream</text>
+    <text x="25" y="215" class="tech-text">Server-Sent Events</text>
+
+    <!-- Log File Monitor -->
+    <rect x="15" y="245" width="180" height="55" rx="6" fill="#0f172a" stroke="#bd00ff" stroke-width="1" />
+    <text x="25" y="265" class="label">local-smart.log Monitor</text>
+    <text x="25" y="282" class="tech-text" fill="#cbd5e1">實時 Tail 檔案變更監聽</text>
+  </g>
+
+  <!-- ==================== SERVICES LAYER ==================== -->
+  <!-- Cloud LLMs -->
+  <g transform="translate(590, 85)">
+    <rect width="160" height="90" rx="8" fill="url(#orangeGrad)" stroke="#ffb700" stroke-width="1.5" filter="url(#glowOrange)" />
+    <text x="15" y="25" class="box-title" fill="#ffb700">Cloud LLM APIs</text>
+    <text x="15" y="48" class="label">OpenAI, Claude, Gemini</text>
+    <text x="15" y="65" class="tech-text">HTTPS / REST API</text>
+    <text x="15" y="78" class="tech-text">Farobot 整合通道</text>
+  </g>
+
+  <!-- Local Ollama -->
+  <g transform="translate(590, 205)">
+    <rect width="160" height="90" rx="8" fill="url(#greenGrad)" stroke="#39ff14" stroke-width="1.5" filter="url(#glowGreen)" />
+    <text x="15" y="25" class="box-title" fill="#39ff14">Local Ollama</text>
+    <text x="15" y="48" class="label">Llama 3, DeepSeek-R1</text>
+    <text x="15" y="65" class="tech-text">http://localhost:11434</text>
+    <text x="15" y="78" class="tech-text">本地離線推理</text>
+  </g>
+
+  <!-- MCP Servers -->
+  <g transform="translate(590, 325)">
+    <rect width="160" height="95" rx="8" fill="url(#purpleGrad)" stroke="#bd00ff" stroke-width="1.2" />
+    <text x="15" y="25" class="box-title" fill="#bd00ff">MCP Servers</text>
+    <text x="15" y="48" class="label">Model Context Protocol</text>
+    <text x="15" y="65" class="tech-text">JSON-RPC / Stdio</text>
+    <text x="15" y="80" class="tech-text">工具延伸 (Files, Shell)</text>
+  </g>
+
+  <!-- ==================== CONNECTIONS ==================== -->
+  
+  <!-- Client to Server: API (HTTP/JSON) -->
+  <path d="M260, 150 L320, 150" class="connection-line" stroke="#00f0ff" marker-end="url(#arrowCyan)" />
+  <text x="265" y="142" class="flow-label">HTTP API</text>
+
+  <!-- Server to Client: SSE Stream -->
+  <path d="M320, 280 L260, 280" class="connection-line" stroke="#bd00ff" marker-end="url(#arrowPurple)" />
+  <text x="268" y="295" class="flow-label">SSE Stream</text>
+
+  <!-- Server to Cloud LLM -->
+  <path d="M530, 130 L590, 130" class="connection-line" stroke="#ffb700" marker-end="url(#arrowOrange)" />
+  <text x="540" y="122" class="flow-label">REST</text>
+
+  <!-- Server to Local Ollama -->
+  <path d="M530, 250 L590, 250" class="connection-line" stroke="#39ff14" marker-end="url(#arrowGreen)" />
+  <text x="540" y="242" class="flow-label">REST</text>
+
+  <!-- Server to MCP -->
+  <path d="M530, 370 L590, 370" class="connection-line" stroke="#bd00ff" marker-end="url(#arrowPurple)" />
+  <text x="540" y="362" class="flow-label">JSON-RPC</text>
+
+  <!-- Agent Execution writes to Log File (conceptual loop) -->
+  <path d="M425, 245 L425, 230" class="connection-line" stroke="#bd00ff" marker-end="url(#arrowPurple)" />
+  
+</svg>

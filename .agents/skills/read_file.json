@@ -1,0 +1,14 @@
+{
+  "name": "read_file",
+  "description": "Read content from a local file in the workspace.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "filePath": {
+        "type": "string",
+        "description": "The absolute or relative path to the file."
+      }
+    },
+    "required": ["filePath"]
+  }
+}

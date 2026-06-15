@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowPurple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#0072ff" stop-opacity="0.02" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bd00ff" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#7209b7" stop-opacity="0.02" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39ff14" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#00aa00" stop-opacity="0.02" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,5 L7,2.5 z" fill="#00f0ff" />
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,5 L7,2.5 z" fill="#bd00ff" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,5 L7,2.5 z" fill="#39ff14" />
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 800; fill: #ffffff; letter-spacing: 2px; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #94a3b8; font-weight: 500; }
+    .step-title { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 700; fill: #ffffff; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 10.5px; fill: #94a3b8; font-weight: 500; }
+    .highlight { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; }
+    .step-num { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 900; fill: #000000; }
+    .flow-line { fill: none; stroke-width: 2; }
+    .flow-label { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 700; fill: #cbd5e1; }
+  </style>
+
+  <!-- Background -->
+  <rect width="800" height="480" rx="15" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2" />
+  
+  <!-- Header Title -->
+  <text x="30" y="35" class="title">AGENT TASK &amp; TOOL WORKFLOW</text>
+  <text x="500" y="35" class="subtitle">AI 代理任務執行與工具鏈實時反饋流</text>
+
+  <!-- ==================== FLOW CHART BOXES ==================== -->
+
+  <!-- STEP 1: USER INPUT -->
+  <g transform="translate(60, 80)">
+    <rect width="180" height="90" rx="8" fill="url(#cyanGrad)" stroke="#00f0ff" stroke-width="1.5" filter="url(#glowCyan)" />
+    <circle cx="28" cy="28" r="14" fill="#00f0ff" />
+    <text x="24" y="33" class="step-num">1</text>
+    <text x="52" y="32" class="step-title">使用者提交任務</text>
+    <text x="15" y="60" class="label">在 Chat 介面輸入任務指令</text>
+    <text x="15" y="74" class="label">例如：「掃描專案並說明」</text>
+  </g>
+
+  <!-- STEP 2: CONDUCTOR PLANNING -->
+  <g transform="translate(310, 80)">
+    <rect width="180" height="90" rx="8" fill="url(#purpleGrad)" stroke="#bd00ff" stroke-width="1.5" filter="url(#glowPurple)" />
+    <circle cx="28" cy="28" r="14" fill="#bd00ff" />
+    <text x="24" y="33" class="step-num">2</text>
+    <text x="52" y="32" class="step-title">大腦思維與規劃</text>
+    <text x="15" y="60" class="label">Conductor 後端調用 LLM</text>
+    <text x="15" y="74" class="label">分析任務並決定執行步驟</text>
+  </g>
+
+  <!-- STEP 3: EXECUTOR DISPATCH -->
+  <g transform="translate(560, 80)">
+    <rect width="180" height="90" rx="8" fill="url(#greenGrad)" stroke="#39ff14" stroke-width="1.5" filter="url(#glowGreen)" />
+    <circle cx="28" cy="28" r="14" fill="#39ff14" />
+    <text x="24" y="33" class="step-num">3</text>
+    <text x="52" y="32" class="step-title">工具與 MCP 調用</text>
+    <text x="15" y="60" class="label">呼叫本地工具或 MCP 服務</text>
+    <text x="15" y="74" class="label">如：read_file, run_command</text>
+  </g>
+
+  <!-- STEP 4: LOG CAPTURE -->
+  <g transform="translate(560, 290)">
+    <rect width="180" height="90" rx="8" fill="url(#greenGrad)" stroke="#39ff14" stroke-width="1.2" />
+    <circle cx="28" cy="28" r="14" fill="#39ff14" fill-opacity="0.7" />
+    <text x="24" y="33" class="step-num">4</text>
+    <text x="52" y="32" class="step-title">寫入運行日誌</text>
+    <text x="15" y="60" class="label">工具執行輸出和進度狀態</text>
+    <text x="15" y="74" class="label">被寫入至 local-smart.log</text>
+  </g>
+
+  <!-- STEP 5: SSE STREAM -->
+  <g transform="translate(310, 290)">
+    <rect width="180" height="90" rx="8" fill="url(#purpleGrad)" stroke="#bd00ff" stroke-width="1.2" />
+    <circle cx="28" cy="28" r="14" fill="#bd00ff" fill-opacity="0.7" />
+    <text x="24" y="33" class="step-num">5</text>
+    <text x="52" y="32" class="step-title">SSE 實時監聽與推播</text>
+    <text x="15" y="60" class="label">後端 tail 監控日誌變更</text>
+    <text x="15" y="74" class="label">透過 /api/monitor/stream 推送</text>
+  </g>
+
+  <!-- STEP 6: UI UPDATE -->
+  <g transform="translate(60, 290)">
+    <rect width="180" height="90" rx="8" fill="url(#cyanGrad)" stroke="#00f0ff" stroke-width="1.2" />
+    <circle cx="28" cy="28" r="14" fill="#00f0ff" fill-opacity="0.7" />
+    <text x="24" y="33" class="step-num">6</text>
+    <text x="52" y="32" class="step-title">UI 實時渲染</text>
+    <text x="15" y="60" class="label">Conductor 卡片、日誌終端</text>
+    <text x="15" y="74" class="label">與進度條即時渲染更新</text>
+  </g>
+
+  <!-- ==================== FLOW ARROWS ==================== -->
+  
+  <!-- Step 1 -> Step 2 -->
+  <path d="M240, 125 L300, 125" class="flow-line" stroke="#00f0ff" stroke-dasharray="5 3" marker-end="url(#arrowCyan)" />
+  <text x="247" y="116" class="flow-label">發送請求</text>
+
+  <!-- Step 2 -> Step 3 -->
+  <path d="M490, 125 L550, 125" class="flow-line" stroke="#bd00ff" stroke-dasharray="5 3" marker-end="url(#arrowPurple)" />
+  <text x="498" y="116" class="flow-label">決定步驟</text>
+
+  <!-- Step 3 -> Step 4 -->
+  <path d="M650, 170 L650, 280" class="flow-line" stroke="#39ff14" marker-end="url(#arrowGreen)" />
+  <text x="656" y="230" class="flow-label">執行輸出</text>
+
+  <!-- Step 4 -> Step 5 -->
+  <path d="M560, 335 L500, 335" class="flow-line" stroke="#39ff14" stroke-dasharray="5 3" marker-end="url(#arrowGreen)" />
+  <text x="508" y="326" class="flow-label">Tail 監控</text>
+
+  <!-- Step 5 -> Step 6 -->
+  <path d="M310, 335 L250, 335" class="flow-line" stroke="#bd00ff" marker-end="url(#arrowPurple)" />
+  <text x="257" y="326" class="flow-label">SSE 推送</text>
+
+  <!-- Step 6 -> Step 1 (Loop indicator) -->
+  <path d="M150, 290 L150, 180" class="flow-line" stroke="#00f0ff" stroke-dasharray="2 2" marker-end="url(#arrowCyan)" />
+  <text x="156" y="238" class="flow-label">狀態循環</text>
+
+</svg>
