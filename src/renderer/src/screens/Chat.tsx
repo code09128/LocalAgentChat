@@ -82,7 +82,7 @@ export default function Chat({ sessionId, onSessionChange }: ChatProps) {
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const id = 'file_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
-      
+
       if (file.type.startsWith('image/')) {
         const previewUrl = URL.createObjectURL(file);
         try {
@@ -197,9 +197,9 @@ export default function Chat({ sessionId, onSessionChange }: ChatProps) {
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
-      
+
       const isTableRow = line.startsWith('|') && line.endsWith('|') && line.split('|').length > 2;
-      
+
       if (isTableRow) {
         if (!inTable) {
           inTable = true;
@@ -209,7 +209,7 @@ export default function Chat({ sessionId, onSessionChange }: ChatProps) {
             tableHtml += `<th>${h}</th>`;
           });
           tableHtml += '</tr></thead><tbody>';
-          
+
           if (i + 1 < lines.length) {
             const nextLine = lines[i + 1].trim();
             if (nextLine.startsWith('|') && nextLine.endsWith('|') && nextLine.includes('-')) {
@@ -219,7 +219,7 @@ export default function Chat({ sessionId, onSessionChange }: ChatProps) {
         } else {
           const cells = line.split('|').map(s => s.trim()).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
           tableHtml += '<tr>';
-          
+
           for (let j = 0; j < headers.length; j++) {
             const cellVal = cells[j] || '';
             tableHtml += `<td>${cellVal}</td>`;
@@ -236,12 +236,12 @@ export default function Chat({ sessionId, onSessionChange }: ChatProps) {
         outputLines.push(lines[i]);
       }
     }
-    
+
     if (inTable) {
       tableHtml += '</tbody></table></div>';
       outputLines.push(tableHtml);
     }
-    
+
     return outputLines.join('\n');
   };
 
@@ -479,7 +479,7 @@ export default function Chat({ sessionId, onSessionChange }: ChatProps) {
           /* Welcome Card */
           <div className="welcome-card glass-panel">
             <div className="welcome-header">
-              <h3>歡迎使用 Local-AGENT Web GUI</h3>
+              <h3>歡迎使用 Local-AGENT</h3>
 
             </div>
             <p>這是一個集成了 暗黑科技美學的單頁應用。您可以在此發送請求與 AI 對話，並在右側儀表板中實時監看 AI 的思考狀態、工具調用過程以及日誌攔截。</p>
@@ -595,7 +595,7 @@ export default function Chat({ sessionId, onSessionChange }: ChatProps) {
               <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
             </svg>
           </button>
-          
+
           <textarea
             ref={textareaRef}
             id="chatInput"

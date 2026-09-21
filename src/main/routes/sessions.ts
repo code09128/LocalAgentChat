@@ -10,6 +10,7 @@ interface SessionMessage {
   id: string;
   role: 'user' | 'ai';
   text: string;
+  images?: string[];
 }
 
 export interface SessionItem {

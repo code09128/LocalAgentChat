@@ -12,6 +12,8 @@ import miscRouter from './routes/misc.js';
 import chatRouter from './routes/chat.js';
 import gatewayRouter from './routes/gateway.js';
 import memoryRouter from './routes/memory.js';
+import pythonRouter from './routes/python.js';
+import { pythonManager } from './python-manager.js';
 
 const app = express();
 app.use(cors());
@@ -28,6 +30,7 @@ app.use('/api', miscRouter);
 app.use('/api', chatRouter);
 app.use('/api', gatewayRouter);
 app.use('/api', memoryRouter);
+app.use('/api', pythonRouter);
 
 // ── SSE Log Monitor ────────────────────────────────────────────────────
 const ANSI_ESCAPE = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
@@ -135,7 +138,48 @@ app.get('/api/monitor/stream', (req, res) => {
   });
 });
 
+// ── Process exit cleanup ───────────────────────────────────────────────
+process.on('SIGINT', () => {
+  pythonManager.stop();
+  process.exit(0);
+});
+process.on('SIGTERM', () => {
+  pythonManager.stop();
+  process.exit(0);
+});
+
 // ── Start server ───────────────────────────────────────────────────────
-app.listen(PORT, () => {
+const isElectron = Boolean(process.versions.electron || process.env.IS_ELECTRON === 'true');
+
+async function launchDesktopWindow() {
+  const { app: electronApp } = await import('electron');
+  const { createDesktopWindow, setupDesktopLifecycle } = await import('./desktop.js');
+  setupDesktopLifecycle();
+  electronApp.whenReady().then(() => {
+    createDesktopWindow();
+  });
+}
+
+const server = app.listen(PORT, async () => {
   console.log(`Backend server started on http://localhost:${PORT}`);
+  pythonManager.autoStartIfEnabled();
+
+  if (isElectron) {
+    launchDesktopWindow();
+  }
+});
+
+server.on('error', (err: any) => {
+  if (err.code === 'EADDRINUSE') {
+    console.warn(`[Backend] Port ${PORT} already in use. Assuming backend server is already running.`);
+    if (isElectron) {
+      console.log(`[Desktop] Reusing running backend on port ${PORT} and opening window...`);
+      launchDesktopWindow();
+    } else {
+      console.error(`Port ${PORT} is busy. Stop other server or set PORT in .env`);
+      process.exit(1);
+    }
+  } else {
+    console.error('[Backend] Server listen error:', err);
+  }
 });

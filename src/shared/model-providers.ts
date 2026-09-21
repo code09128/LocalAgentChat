@@ -115,6 +115,7 @@ export interface Permissions {
   readFile: boolean;
   writeFile: boolean;
   internetAccess: boolean;
+  executeGit?: boolean;
 }
 
 export interface ProfileConfig {
