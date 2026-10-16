@@ -50,6 +50,8 @@ function parseLine(cleanLine: string) {
     if (m.includes('deepseek')) currentAgent = 'DeepSeek-v4-pro (🧠 主大腦)';
     else if (m.includes('codex') || m.includes('gpt-5.3-codex') || m.includes('gpt-5.4-mini')) currentAgent = 'gpt-5.3-codex (💻 程式解算器)';
     else if (m.includes('mistral')) currentAgent = 'mistral-large-3 (📄 長文本專家)';
+    else if (m.includes('astra')) currentAgent = 'gpt-6-astra (🌟 次世代旗艦)';
+    else if (m.includes('sol')) currentAgent = 'gpt-5.6-sol (☀️ 旗艦解題)';
     else currentAgent = `${m} (🤖 輔助運算)`;
   }
 
